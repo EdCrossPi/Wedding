@@ -1,12 +1,16 @@
 {
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "postcss-cli": "^11.0.1",
-    "tailwindcss": "^3.0.0"
-  },
   "scripts": {
-    "build": "postcss ./style.css -o ./dist/output.css --verbose",
-    "dev": "postcss style.css -o ./dist/output.css --watch"
+    "build": "npx postcss ./style.css -o ./dist/output.css --verbose",
+    "dev": "npx postcss ./style.css -o ./dist/output.css --watch"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "npm": ">=9.x"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
