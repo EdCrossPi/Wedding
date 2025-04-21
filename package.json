@@ -6,7 +6,6 @@
       "tailwindcss": "^3.0.0"
     },
     "scripts": {
-      "build": "postcss src/styles.css -o output.css"  // Ajuste conforme o caminho correto
+      "build": "postcss styles.css -o output.css"
     }
   }
-  
