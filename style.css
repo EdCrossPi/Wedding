@@ -289,7 +289,7 @@ a:hover {
 }
 
 .home-img {
-  background-image: url("/public/foto_noivado_hor.jpg");
+  background-image: url("public/foto_noivado_hor.jpg");
   background-size: cover;
   background-position: center;
   will-change: transform; /* Melhora performance */
@@ -421,7 +421,7 @@ a:hover {
 }
 
 .timeline-img {
-  background-image: url("/public/anel_noivado.jpg");
+  background-image: url("public/anel_noivado.jpg");
   height: 70vh;
   width: 33.33vw;
   background-position: center;
@@ -530,15 +530,15 @@ a:hover {
   background-position: center;
 }
 .gallery-img:nth-child(1) {
-  background-image: url("/public/galeria_1.jpg");
+  background-image: url("public/galeria_1.jpg");
   background-position-x: right;
 }
 .gallery-img:nth-child(3) {
-  background-image: url("/public/galeria_3.jpg");
+  background-image: url("public/galeria_3.jpg");
 }
 .gallery-img:nth-child(2) {
   background-position-y: top;
-  background-image: url("/public/galeria_2.jpg");
+  background-image: url("public/galeria_2.jpg");
 }
 @media (max-width: 1000px) {
   .gallery {
@@ -580,7 +580,7 @@ a:hover {
 /* <===================HANDS===================> */
 
 .hands {
-  background-image: url("/public/teste_hor.jpg");
+  background-image: url("public/teste_hor.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -594,7 +594,7 @@ a:hover {
   .hands {
     height: 45vh;
     width: 100%;
-    background-image: url("/public/teste_hor.jpg");
+    background-image: url("public/teste_hor.jpg");
     background-size: 185%;
     background-position-y: center;
     background-attachment: scroll;
@@ -671,7 +671,7 @@ a:hover {
   display: block;
   height: 100vh;
   width: 40vw;
-  background-image: url("/public/olhar.jpg");
+  background-image: url("public/olhar.jpg");
   background-size: cover;
   background-position-y: top;
   background-repeat: no-repeat;
@@ -732,7 +732,7 @@ footer h2 {
 /* <===================INVITE===================> */
 
 .invite-img {
-  background-image: url("/public/abraco.jpg");
+  background-image: url("public/abraco.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
