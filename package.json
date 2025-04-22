@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "vercel-build": "npm run build",
-    "build": "npx postcss ./style.css -o ./dist/output.css"
+    "build": "postcss ./style.css -o ./dist/output.css",
+    "vercel-build": "npm run build"
   },
   "engines": {
     "node": ">=18.x",
@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
+    "postcss": "^8.4.31",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.1.4"
   }
