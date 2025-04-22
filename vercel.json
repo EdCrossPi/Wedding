@@ -9,11 +9,5 @@
         "nodeVersion": "18.x"
       }
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
