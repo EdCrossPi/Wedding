@@ -1,9 +1,8 @@
 {
-
-"scripts": {
-  "build": "npx postcss ./style.css -o ./dist/output.css",
-  "vercel-build": "npm run build"
-},
+  "scripts": {
+    "build": "npx postcss style.css -o ./dist/output.css",
+    "vercel-build": "npm run build"
+  },
   "engines": {
     "node": ">=18.x",
     "npm": ">=9.x"
