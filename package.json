@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "build": "postcss ./style.css -o ./dist/output.css",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build",
+    "build": "npm rebuild && postcss style.css -o dist/output.css",
+    "postinstall": "chmod +x ./node_modules/.bin/postcss"
   },
   "engines": {
     "node": ">=18.x",
