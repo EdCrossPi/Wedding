@@ -209,15 +209,6 @@ startCountdown(weddingDate);
 
 /* <===================RSVP===================> */
 
-tailwind.config = {
-  theme: {
-    extend: {},
-  },
-  corePlugins: {
-    preflight: false, // Desativa o reset global do Tailwind
-  },
-};
-
 const convidados = [
   { nome: "Eduardo e Rafael", telefone: "(61) 99999-xxxx" },
   { nome: "Ana Beatriz", telefone: "(61) 98888-xxxx" },
@@ -228,15 +219,11 @@ const convidados = [
 /* <===================RSVP===================> */
 document.addEventListener("DOMContentLoaded", () => {
   // Lista de teste com nome e número de identificação
-  const items = [
-    { name: "Ana", number: "12345" },
-    { name: "João", number: "67890" },
-    { name: "Carlos", number: "54321" },
-    { name: "Maria", number: "98765" },
-    { name: "Lucas", number: "11223" },
-    { name: "Fernanda", number: "33445" },
-    { name: "Pedro", number: "55678" },
-    { name: "Larissa", number: "99887" },
+  const convidados = [
+    { nome: "Eduardo e Rafael", telefone: "(61) 99999-xxxx" },
+    { nome: "Ana Beatriz", telefone: "(61) 98888-xxxx" },
+    { nome: "Carlos Santos", telefone: "(61) 97777-xxxx" },
+    { nome: "Fernanda Lima", telefone: "(61) 96666-xxxx" },
   ];
 
   const searchInput = document.getElementById("searchInput");
@@ -247,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const showResults = (results) => {
     guestList.innerHTML = ""; // Limpa a lista anterior
     if (results.length > 0) {
-      results.forEach((item) => {
+      results.forEach((convidados) => {
         const card = document.createElement("div");
         card.classList.add(
           "card",
@@ -262,8 +249,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "border"
         );
         card.innerHTML = `
-          <div class="font-semibold text-lg text-gray-800">${item.name}</div>
-          <div class="text-sm text-gray-500">Número: ${item.number}</div>
+          <div class="font-semibold text-lg text-gray-800">${convidados.nome}</div>
+          <div class="text-sm text-gray-500">Número: ${convidados.telefone}</div>
         `;
         guestList.appendChild(card);
       });
@@ -273,22 +260,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Função para filtrar a lista de itens com base em nome exato (sem includes)
-  const filterItems = () => {
+  // Função para filtrar a lista de convidados com base em nome exato (sem includes)
+  const filterGuests = () => {
     const searchText = searchInput.value.trim().toLowerCase();
-    const filteredItems = items.filter(
-      (item) => item.name.toLowerCase() === searchText
+
+    if (searchText === "") {
+      showResults([]); // Não mostra nada
+      return;
+    }
+
+    const filteredGuests = convidados.filter((convidado) =>
+      convidado.nome.toLowerCase().includes(searchText)
     );
-    showResults(filteredItems);
+
+    showResults(filteredGuests);
   };
 
   // Apenas pesquisa ao clicar ou pressionar enter (sem buscar automaticamente ao digitar)
-  searchButton.addEventListener("click", filterItems);
+  searchButton.addEventListener("click", filterGuests);
 
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault(); // Evita recarregar a página
-      filterItems();
+      filterGuests();
     }
   });
 });

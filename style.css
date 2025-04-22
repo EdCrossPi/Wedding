@@ -1,7 +1,7 @@
 /* styles.css */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* <===================TYPOGRAPHY & FONTS===================> */
 
@@ -850,6 +850,20 @@ footer h2 {
   width: 100%;
 }
 
+.search {
+  background-color: var(--grey-color-light);
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc; /* Adiciona uma borda simples */
+}
+
+.search:hover {
+  background-color: var(--grey-color-light);
+}
 /* <===================COUNTDOWN===================> */
 
 .countdown-box {
