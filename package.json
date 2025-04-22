@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "npx postcss ./style.css -o ./dist/output.css",
+    "build": "node scripts/build.js",
     "vercel-build": "npm run build"
   },
   "engines": {
