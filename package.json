@@ -1,5 +1,5 @@
 {
-  json
+
 "scripts": {
   "build": "npx postcss ./style.css -o ./dist/output.css",
   "vercel-build": "npm run build"
