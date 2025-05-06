@@ -9,5 +9,11 @@
         "nodeVersion": "22.x"
       }
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1"
+    }
   ]
 }
