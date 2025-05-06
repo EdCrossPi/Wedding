@@ -6,11 +6,17 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "nodeVersion": "22.x"
+        "nodeVersion": "20.x"
       }
     }
   ],
   "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
     {
       "src": "/(.*)",
       "dest": "/dist/$1"
