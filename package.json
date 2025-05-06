@@ -4,7 +4,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "vercel-build": "echo 'Build successful' && exit 0",
-    "start": "node index.js"
+    "start": "node main.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.5",
