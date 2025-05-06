@@ -12,6 +12,26 @@
     --horizontal-margin-spacing:6rem;
     --grey-color-light: rgba(232,230,230,.6);
     --grey-color: rgba(232,230,230,1);
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
 }
 
 /* <===================UNIVERSAL CSS===================> */
@@ -818,23 +838,100 @@ footer h2{
 }
 
 .countdown-section {
-    flex: 1; /* Faz cada div ocupar o mesmo espaço */
+    flex: 1 1 0%; /* flex-1 */
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    justify-content: center; /* justify-center */
+    align-items: normal; /* items-normal (valor padrão) */
+    width: 100%; /* w-full */
+    text-align: center; /* text-center */
+}
+
+.invite-text {
+    display: block;       
+    font-size: 1.125rem;  
+    line-height: 1.75rem; 
+    font-weight: 600;     
+    margin-bottom: 0.5rem;
+}
+
+.invite-input {
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: normal; /* Centraliza horizontalmente */
-    width: 100%;
+    gap: 0.5rem;
+}
+
+.input-box {
+    border-width: 1px;
+    border-style: solid;
+    border-color: currentColor;
+    padding: 0.5rem;
+    width: 100% !important;
+    border-radius: 0.5rem;
+}
+
+.input-box:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.5);
+    border-color: transparent;
+}
+
+.search-button {
+    background-color: var(--grey-color-light);
+    color: black;
+    padding: 0.5rem 1rem;        /* py-2 px-4 in one declaration */
+    border-radius: 0.5rem;
+}
+
+.search-button:hover {
+    background-color: var(--grey-color);
 }
 
 .invite-card {
-    flex: 1; /* Faz cada div ocupar o mesmo espaço */
-    display: top;
+    max-width: 32rem; /* 512px - max-w-lg */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    flex: 1;
+    display: flex; /* Corrigi para 'flex' (você tinha 'display: top' que não existe) */
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: normal; /* Centraliza horizontalmente */
+    justify-content: center;
+    align-items: normal;
     width: 100%;
 }
 
+.guest-list {
+    width: 100%;
+    max-width: 28rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+}
+
+.guest-list-js {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .invite-card__name {
+    font-weight: 600;
+  }
+  
+  .invite-card__phone {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .invite-card__action {
+    color: #2563eb;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 /* <===================COUNTDOWN===================> */
 
 .countdown-box {
@@ -845,6 +942,13 @@ footer h2{
     text-align: center;
     width: 5.5rem;
     
+}
+
+.countdown-text {
+    font-size: 1.875rem; /* 30px - text-3xl */
+    line-height: 2.25rem; /* 36px - line-height padrão do text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 (4 unidades = 1rem/16px) */
 }
 
 .countdown-container {
@@ -909,7 +1013,11 @@ footer h2{
     width: 100px;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(248,243,238,0) 0%, rgba(248,243,238,1) 100%);
+    background: linear-gradient(
+    90deg, 
+    rgba(248,243,238,1) 0%, 
+    rgba(248,243,238,0) 100%
+  );
     z-index: 1;
   }
 

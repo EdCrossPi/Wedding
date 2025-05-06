@@ -196,15 +196,6 @@ startCountdown(weddingDate);
 
 /* <===================RSVP===================> */
 
-tailwind.config = {
-  theme: {
-    extend: {},
-  },
-  corePlugins: {
-    preflight: false,
-  },
-};
-
 const convidados = [
   { nome: "Eduardo e Rafael", telefone: "(61) 99999-xxxx" },
   { nome: "Ana Beatriz", telefone: "(61) 98888-xxxx" },
@@ -228,7 +219,7 @@ function searchGuest() {
   const searchTerm = searchInput.value.toLowerCase().trim();
 
   if (!searchTerm || searchTerm.length < 3) {
-    guestList.innerHTML = `<p class="text-red-500 text-base">Digite um nome ou parte do nome.</p>`;
+    guestList.innerHTML = `<p style="color: #ef4444; font-size: 18px;">Digite um nome ou parte do nome do convite</p>`;
     return;
   }
 
@@ -245,29 +236,29 @@ function displayResults(guestArray) {
   guestList.innerHTML = "";
 
   if (guestArray.length === 0) {
-    guestList.innerHTML = `<p class="text-red-500">Nenhum convite encontrado.</p>`;
+    guestList.innerHTML = `<p style="color: #ef4444;">Nenhum convite encontrado.</p>`;
     return;
   }
 
   guestArray.forEach(convidado => {
     const inviteDiv = document.createElement("div");
-    inviteDiv.classList.add("invite", "flex", "justify-between", "items-center", "border", "p-4", "rounded-lg", "bg-white", "shadow");
+    inviteDiv.classList.add('guest-list-js');
 
     const descriptionDiv = document.createElement("div");
 
     const nameP = document.createElement("p");
-    nameP.classList.add("font-semibold");
+    nameP.classList.add('invite-card__name');
     nameP.textContent = convidado.nome;
 
     const phoneP = document.createElement("p");
-    phoneP.classList.add("text-sm", "text-gray-600");
-    phoneP.innerHTML = `Tel.: <span class="uppercase">${convidado.telefone}</span>`;
+    phoneP.classList.add('invite-card__phone');
+    phoneP.innerHTML = `Tel.: <span style="text-transform: uppercase;">${convidado.telefone}</span>`;
 
     descriptionDiv.appendChild(nameP);
     descriptionDiv.appendChild(phoneP);
 
     const actionDiv = document.createElement("div");
-    actionDiv.classList.add("text-blue-600", "hover:underline", "cursor-pointer");
+    actionDiv.classList.add('invite-card__action');
     actionDiv.textContent = "Selecionar";
 
     inviteDiv.appendChild(descriptionDiv);
