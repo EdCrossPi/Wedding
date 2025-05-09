@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="public/wedding-rings.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
-    <script type="module" src="/main.js" defer></script>
     
     
     <title>Ana Bia e Edu</title>
@@ -20,12 +19,12 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <label class="logo">A&E</label>
+        <label class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="cursor: pointer;">A&E</label>
         <ul class="text">
             <li><a href="gift.html" onclick="myFunction(event)">Lista de Presentes</a></li>
-            <li><a href="#story" onclick="myFunction(event)">Nossa História</a></li>
-            <li><a href="#local" onclick="myFunction(event)">Localização</a></li>
-            <li><a href="#votos" onclick="myFunction(event)">Votos</a></li>
+            <li><a href="#story">Nossa História</a></li>
+            <li><a href="#local">Localização</a></li>
+            <li><a href="#votos">Votos</a></li>
         </ul>
     </nav>
 
@@ -251,5 +250,7 @@
         </div>
     </div>
 
+    <script type="module" src="/main.js" defer></script>
+    
 </body>
 </html>

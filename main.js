@@ -1,3 +1,5 @@
+/* <===================PARALLAX===================> */
+
 // Variável global para controle do parallax
 let parallaxAtivo = true;
 
@@ -76,14 +78,17 @@ function applyParallax(isMobile) {
   };
 }
 
-// Função de scroll suave que integra com o parallax
+/* <===================LINK-HEF===================> */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", smoothScroll);
+  });
+});
+
 function smoothScroll(event) {
   event.preventDefault();
 
-  // Pausa o parallax temporariamente
-  const pauseParallax = applyParallax(false); // Passa o valor isMobile apropriado
-
-  const targetId = event.target.getAttribute("href");
+  const targetId = event.currentTarget.getAttribute("href");
   if (!targetId || targetId === "#") {
     window.scrollTo({ top: 0, behavior: "smooth" });
     history.pushState(null, null, "#");
@@ -91,43 +96,61 @@ function smoothScroll(event) {
   }
 
   const targetElement = document.querySelector(targetId);
-  if (targetElement) {
-    const navbarHeight = document.querySelector("nav").offsetHeight;
-    const targetPosition =
-      targetElement.getBoundingClientRect().top + window.pageYOffset;
+  if (!targetElement) return;
 
-    // Define os offsets específicos para cada ID
-    const offsetsPorId = {
-      "#local": 100, // 100px para #local
-      "#votos": 20, // 20px para #registry
-      "#historia": 40, // 40px para #story
-    };
+  const navbar = document.querySelector("nav");
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
+  const targetPosition =
+    targetElement.getBoundingClientRect().top + window.scrollY;
 
-    // Usa o offset específico ou um valor padrão (ex: 30px)
-    const offsetPersonalizado = offsetsPorId[targetId] || 30;
+  const isMobile = window.innerWidth <= 768;
+  const estaNoTopo = window.scrollY < 10;
 
-    window.scrollTo({
-      top: targetPosition - navbarHeight - offsetPersonalizado,
-      behavior: "smooth",
-    });
+  // Offsets personalizados por ID (desktop e mobile)
+  const offsetsDesktop = {
+    "#story": -180,
+    "#local": -40,
+    "#votos": -130,
+  };
 
-    // Atualiza a URL sem disparar scroll
-    history.pushState(null, null, targetId);
+  const offsetsMobile = {
+    "#story": -100,
+    "#local": -20,
+    "#votos": -45,
+  };
+
+  const offsetsPorId = isMobile ? offsetsMobile : offsetsDesktop;
+
+  let offsetAplicado;
+
+  if (estaNoTopo) {
+    if (targetId === "#local") {
+      offsetAplicado = isMobile ? 100 : 110;
+    } else if (targetId === "#story") {
+      offsetAplicado = isMobile ? 70 : 130;
+    } else if (targetId === "#votos") {
+      offsetAplicado = isMobile ? 90 : 100;
+    } else {
+      offsetAplicado = 0;
+    }
+  } else {
+    offsetAplicado = offsetsPorId[targetId] ?? 30;
   }
+
+  const scrollToPosition = targetPosition - navbarHeight - offsetAplicado;
+
+  window.scrollTo({
+    top: scrollToPosition,
+    behavior: "smooth",
+  });
+
+  history.pushState(null, null, targetId);
+
+  console.log("Scrolling to:", targetId);
+  console.log("Offset aplicado:", offsetAplicado);
 }
 
-// Inicialização
-document.addEventListener("DOMContentLoaded", () => {
-  const isMobile = window.innerWidth < 768;
-
-  // Inicia o parallax
-  applyParallax(isMobile);
-
-  // Configura os listeners de scroll suave
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", smoothScroll);
-  });
-});
+/* <===================REVEAL===================> */
 
 function reveal() {
   const reveals = document.querySelectorAll(".reveal");
