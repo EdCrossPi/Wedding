@@ -106,7 +106,6 @@ function smoothScroll(event) {
   const isMobile = window.innerWidth <= 768;
   const estaNoTopo = window.scrollY < 10;
 
-  // Offsets personalizados por ID (desktop e mobile)
   const offsetsDesktop = {
     "#story": -180,
     "#local": -40,
@@ -118,16 +117,16 @@ function smoothScroll(event) {
     "#local": -20,
     "#votos": -45,
   };
-
   const offsetsPorId = isMobile ? offsetsMobile : offsetsDesktop;
 
+  // Offsets personalizados por ID (desktop e mobile)
   let offsetAplicado;
 
   if (estaNoTopo) {
-    if (targetId === "#local") {
-      offsetAplicado = isMobile ? 100 : 110;
-    } else if (targetId === "#story") {
-      offsetAplicado = isMobile ? 70 : 130;
+    if (targetId === "#story") {
+      offsetAplicado = isMobile ? 70 : 0;
+    } else if (targetId === "#local") {
+      offsetAplicado = isMobile ? 100 : 150;
     } else if (targetId === "#votos") {
       offsetAplicado = isMobile ? 90 : 100;
     } else {
@@ -136,7 +135,6 @@ function smoothScroll(event) {
   } else {
     offsetAplicado = offsetsPorId[targetId] ?? 30;
   }
-
   const scrollToPosition = targetPosition - navbarHeight - offsetAplicado;
 
   window.scrollTo({
