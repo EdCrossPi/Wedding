@@ -15,7 +15,7 @@ function applyParallax(isMobile) {
   // Configurações para mobile e desktop
   const config = {
     mobile: {
-      x: { factor: -0.5, offset: -100 },
+      x: { factor: -0.5, offset: -2500 },
       y1: { factor: 0.2, offset: 3800 },
       y2: { factor: -0.05, offset: 2000 },
     },
@@ -147,6 +147,18 @@ function smoothScroll(event) {
   console.log("Scrolling to:", targetId);
   console.log("Offset aplicado:", offsetAplicado);
 }
+/* mobile checkbox */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuLinks = document.querySelectorAll(".nav ul li a");
+  const checkbox = document.getElementById("check");
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      checkbox.checked = false;
+    });
+  });
+});
 
 /* <===================REVEAL===================> */
 

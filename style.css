@@ -199,7 +199,7 @@ label.logo {
 }
 
 nav ul {
-  float: right;
+  float: left;
   margin-right: 20px;
   list-style: none;
 }
@@ -232,30 +232,33 @@ a:hover {
 #check {
   display: none;
 }
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   label.logo {
-    font-size: 20px;
+    font-size: 30px;
   }
   nav ul li a {
-    font-size: 18px;
+    font-size: 22px;
+    color: #222;
+    text-shadow: 0 0 2px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+      -1px 1px 0 #fff, 1px 1px 0 #fff;
   }
   html {
     font-size: 10px;
   }
 }
-@media (max-width: 570px) {
+@media (max-width: 768px) {
   .checkbtn {
     display: block;
   }
   ul {
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     backdrop-filter: blur(5px);
     top: 80px;
     font-weight: bold;
     left: -100%;
-    text-align: center;
+    text-align: left;
     transition: all 0.5s;
   }
   nav ul li {
@@ -346,7 +349,7 @@ a:hover {
   width: 50vw;
   background-position-x: -100px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .container-out {
     flex-direction: column;
   }
@@ -532,13 +535,13 @@ a:hover {
   #story h3 {
     width: 100%;
     margin: 5px 0;
-    font-size: var(--h3-size);
+    font-size: 2.8rem;
   }
   #story p {
     width: 100%;
     margin: 5px 0;
-    font-size: var(--text-size);
-    line-height: var(--text-size);
+    font-size: 1.8rem;
+    line-height: 1.8rem;
   }
 }
 
@@ -685,6 +688,10 @@ a:hover {
     padding: 0 20px 0 20px; /* Ajusta o padding para dispositivos móveis */
     flex-direction: column; /* Altera a direção para coluna no mobile */
   }
+  .vote-text {
+    font-size: 3rem;
+    line-height: 1.5rem;
+  }
 }
 
 .registry-container {
@@ -759,7 +766,7 @@ footer h2 {
 /* <===================INVITE===================> */
 
 .invite-img {
-  background-image: url("/public/abraco.jpg");
+  background-image: url("/public/anel_noivado.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
