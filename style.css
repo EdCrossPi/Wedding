@@ -311,7 +311,7 @@ a:hover {
 }
 
 .home-img {
-  background-image: url("/public/foto_noivado_hor.jpg");
+  background-image: url("/public/foto_noivado.jpg");
   background-size: cover;
   background-position: center;
   will-change: transform; /* Melhora performance */
