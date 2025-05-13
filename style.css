@@ -464,6 +464,11 @@ a:hover {
   width: 66.66vw;
 }
 
+.timings {
+  margin: 30px;
+  width: 66.66vw;
+}
+
 @media (min-width: 769px) {
   .location-mobile {
     position: absolute;
@@ -499,6 +504,40 @@ a:hover {
   }
 }
 
+.timeline-text h1 {
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  text-align: justify;
+  font-weight: bold; /* Adiciona negrito ao texto */
+}
+
+.timeline-text h2 {
+  font-size: 2rem;
+  line-height: 2rem;
+  text-align: justify;
+}
+
+@media (max-width: 1000px) {
+  .timeline-text h1 {
+    font-size: 2.1rem;
+    line-height: 2.1rem;
+    text-align: justify;
+    font-weight: bold; /* Adiciona negrito ao texto */
+  }
+
+  .timeline-text h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    text-align: justify;
+  }
+
+  .timeline-text h3,
+  .timeline-text p {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    text-align: justify;
+  }
+}
 /* <===================STORY===================> */
 
 #story {
@@ -507,6 +546,18 @@ a:hover {
   flex-direction: row;
 }
 
+#story h3 {
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  text-align: justify;
+  font-weight: bold;
+}
+#story p {
+  width: 100%;
+  margin: 5px 0;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+}
 @media (max-width: 1000px) {
   #story {
     padding-top: 5vh;
@@ -535,7 +586,10 @@ a:hover {
   #story h3 {
     width: 100%;
     margin: 5px 0;
-    font-size: 2.8rem;
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+    text-align: justify;
+    font-weight: bold;
   }
   #story p {
     width: 100%;
@@ -683,14 +737,21 @@ a:hover {
   justify-content: space-between;
 }
 
+.vote-text {
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  text-align: left;
+  font-weight: bold;
+  margin: auto;
+}
 @media (max-width: 768px) {
   #votos {
     padding: 0 20px 0 20px; /* Ajusta o padding para dispositivos móveis */
     flex-direction: column; /* Altera a direção para coluna no mobile */
   }
   .vote-text {
-    font-size: 3rem;
-    line-height: 1.5rem;
+    font-size: 2.4rem !important;
+    line-height: 1.5rem !important;
   }
 }
 
@@ -742,8 +803,12 @@ a:hover {
 
 /* <===================PARTING MESSAGE===================> */
 .parting-message h1 {
+  font-size: 7rem;
+  line-height: 7rem;
+  font-weight: 500;
   margin-top: 10vh;
   text-align: center;
+  margin: 0px !important;
 }
 .parting-message button {
   margin: 10vh auto;
@@ -788,6 +853,30 @@ footer h2 {
   height: 3vh;
   width: 100%;
   margin-bottom: 5vh;
+}
+
+/* <===================LOCAL===================> */
+
+#local h2 {
+  font-size: 2.4rem !important;
+  line-height: 2.4rem;
+  text-align: left;
+  text-align: justify;
+}
+
+@media (max-width: 1000px) {
+  #local h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    text-align: left;
+    padding-left: 20px;
+    text-align: justify;
+  }
+  #local h3 {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    text-align: justify;
+  }
 }
 
 .map-container {

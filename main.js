@@ -114,7 +114,7 @@ function smoothScroll(event) {
 
   const offsetsMobile = {
     "#story": -100,
-    "#local": -20,
+    "#local": -50,
     "#votos": -45,
   };
   const offsetsPorId = isMobile ? offsetsMobile : offsetsDesktop;
@@ -126,9 +126,9 @@ function smoothScroll(event) {
     if (targetId === "#story") {
       offsetAplicado = isMobile ? 70 : 0;
     } else if (targetId === "#local") {
-      offsetAplicado = isMobile ? 100 : 150;
+      offsetAplicado = isMobile ? 100 : 110;
     } else if (targetId === "#votos") {
-      offsetAplicado = isMobile ? 90 : 100;
+      offsetAplicado = isMobile ? 95 : 100;
     } else {
       offsetAplicado = 0;
     }
@@ -152,12 +152,22 @@ function smoothScroll(event) {
 document.addEventListener("DOMContentLoaded", function () {
   const menuLinks = document.querySelectorAll(".nav ul li a");
   const checkbox = document.getElementById("check");
+  const logo = document.querySelector(".logo");
 
+  // Fecha o menu ao clicar em qualquer link
   menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
       checkbox.checked = false;
     });
   });
+
+  // Fecha o menu ao clicar na logo
+  if (logo) {
+    logo.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      checkbox.checked = false;
+    });
+  }
 });
 
 /* <===================REVEAL===================> */
