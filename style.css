@@ -132,7 +132,7 @@ h3 {
 
 .huge-btn {
   display: block;
-  font-size: 1rem;
+  font-size: 18px;
   background: transparent;
   border: 1px solid #212121;
   padding: 25px 50px;
@@ -160,6 +160,8 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
 [data-parallax] {
@@ -925,6 +927,11 @@ footer h2 {
   color: #2563eb;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.bless-us {
+  display: flex;
+  justify-content: center;
 }
 
 /* <===================COUNTDOWN===================> */
