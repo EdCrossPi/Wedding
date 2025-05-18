@@ -191,7 +191,7 @@ function reveal() {
 window.addEventListener("scroll", reveal);
 
 function checkDevice() {
-  const isMobile = window.innerWidth <= 768; // Adjust threshold as needed
+  const isMobile = window.innerWidth <= 768;
   applyParallax(isMobile);
 }
 
