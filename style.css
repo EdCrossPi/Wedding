@@ -122,6 +122,11 @@ h3 {
   font-size: var(--text-size);
   line-height: 1.3rem;
 }
+.reveal.test {
+  transform: translateY(0);
+  opacity: 1;
+  padding-left: 0px !important;
+}
 
 @media (max-width: 768px) {
   .text {
@@ -808,7 +813,7 @@ a:hover {
   font-weight: 500;
   margin-top: 10vh;
   text-align: center;
-  margin: 0px !important;
+  padding-left: 0px !important;
 }
 .parting-message button {
   margin: 10vh auto;
