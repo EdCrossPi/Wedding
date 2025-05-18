@@ -181,9 +181,9 @@ function reveal() {
     const elementVisible = 150;
 
     if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active", "test");
+      reveals[i].classList.add("active");
     } else {
-      reveals[i].classList.remove("active", "test");
+      reveals[i].classList.remove("active");
     }
   }
 }
