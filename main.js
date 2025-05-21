@@ -368,8 +368,17 @@ function displayResults(guestArray) {
     searchResult.appendChild(inviteDiv);
   });
 }
+
 window.verifyGuest = async function () {
   const codigo = codigoInput.value;
+
+  // Usa a variável global com o nome do convite
+  const convite = conviteSelecionado;
+
+  if (!convite) {
+    alert("Erro interno: nome do convite não definido.");
+    return;
+  }
 
   try {
     const res = await fetch(`${API_BASE}/verificar`, {
@@ -394,6 +403,12 @@ window.verifyGuest = async function () {
 
     document.getElementById("verificationMessage").textContent =
       data.message || "";
+
+    // ✅ Abrir a modal de confirmação
+    const modal = document.getElementById("modalConfirmacao");
+    if (modal) {
+      modal.style.display = "block";
+    }
   } catch (err) {
     alert("Código inválido. Verificar mensagem do convite.");
   }
