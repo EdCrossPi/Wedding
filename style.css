@@ -979,8 +979,13 @@ footer h2 {
   padding: 0.5rem 1rem; /* py-2 px-4 in one declaration */
   border-radius: 0.5rem;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .search-button:hover {
@@ -1230,9 +1235,10 @@ footer h2 {
 
 /* <===================MODAL===================> */
 .modal-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-bottom: 15px;
+  font-size: 20px;
+  color: #333;
 }
 .verify-modal {
   position: fixed;

@@ -287,8 +287,6 @@ window.searchGuest = async function () {
     return;
   }
 
-  console.log("Buscando por:", nome);
-
   try {
     const res = await fetch(
       `${API_BASE}/buscar?nome=${encodeURIComponent(nome)}`
@@ -312,7 +310,6 @@ window.searchGuest = async function () {
 
 const guestList = document.getElementById("guestList");
 const verifyModal = document.getElementById("verifyModal");
-const conviteInput = document.getElementById("conviteInput");
 const codigoInput = document.getElementById("codigoInput");
 const verificationMessage = document.getElementById("verificationMessage");
 document.getElementById("searchButton")?.addEventListener("click", searchGuest);
@@ -358,7 +355,6 @@ function displayResults(guestArray) {
     actionDiv.addEventListener("click", () => {
       conviteSelecionado = convidado.convite?.nome || convidado.nome || "";
       document.getElementById("modalTitle").textContent = conviteSelecionado;
-
       document.getElementById("codigoInput").value = ""; // limpa código
       document.getElementById("verificationMessage").textContent = ""; // limpa mensagens anteriores
       document.getElementById("guestList").innerHTML = ""; // limpa lista de convidados da modal
@@ -373,8 +369,7 @@ function displayResults(guestArray) {
   });
 }
 window.verifyGuest = async function () {
-  const convite = conviteSelecionado;
-  const codigo = document.getElementById("codigoInput").value;
+  const codigo = codigoInput.value;
 
   try {
     const res = await fetch(`${API_BASE}/verificar`, {
