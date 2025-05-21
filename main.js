@@ -278,6 +278,8 @@ const API_BASE =
     ? "http://localhost:3000"
     : "https://backend-rsvp-production.up.railway.app";
 
+let conviteSelecionado = "";
+
 window.searchGuest = async function () {
   const nome = document.getElementById("searchInput").value.trim();
   if (!nome) {
@@ -352,14 +354,16 @@ function displayResults(guestArray) {
     actionDiv.classList.add("invite-card__action");
     actionDiv.textContent = "Selecionar";
 
-    // Ao clicar em selecionar abre modal para inserir código, com conviteInput preenchido
+    // Ao clicar em selecionar abre modal para inserir código
     actionDiv.addEventListener("click", () => {
-      conviteInput.value = convidado.convite?.nome || convidado.nome || "";
-      codigoInput.value = ""; // limpa código
-      verificationMessage.textContent = ""; // limpa mensagens anteriores
-      guestList.innerHTML = ""; // limpa lista de convidados da modal
-      verifyModal.style.display = "flex"; // abre modal
-      searchResult.innerHTML = ""; // limpa resultado da busca
+      conviteSelecionado = convidado.convite?.nome || convidado.nome || "";
+      document.getElementById("modalTitle").textContent = conviteSelecionado;
+
+      document.getElementById("codigoInput").value = ""; // limpa código
+      document.getElementById("verificationMessage").textContent = ""; // limpa mensagens anteriores
+      document.getElementById("guestList").innerHTML = ""; // limpa lista de convidados da modal
+      document.getElementById("verifyModal").style.display = "flex"; // abre modal
+      document.getElementById("searchResult").innerHTML = ""; // limpa resultado da busca
     });
 
     inviteDiv.appendChild(descriptionDiv);
@@ -369,8 +373,8 @@ function displayResults(guestArray) {
   });
 }
 window.verifyGuest = async function () {
-  const convite = conviteInput.value;
-  const codigo = codigoInput.value;
+  const convite = conviteSelecionado;
+  const codigo = document.getElementById("codigoInput").value;
 
   try {
     const res = await fetch(`${API_BASE}/verificar`, {
@@ -382,7 +386,7 @@ window.verifyGuest = async function () {
     if (!res.ok) throw new Error("Dados inválidos");
 
     const data = await res.json();
-    guestList.innerHTML = "";
+    document.getElementById("guestList").innerHTML = "";
 
     data.nomes.forEach((nome) => {
       const li = document.createElement("li");
@@ -390,12 +394,13 @@ window.verifyGuest = async function () {
       li.dataset.nome = nome;
       li.classList.add("guest-item");
       li.onclick = () => li.classList.toggle("selected");
-      guestList.appendChild(li);
+      document.getElementById("guestList").appendChild(li);
     });
 
-    verificationMessage.textContent = data.message || "";
+    document.getElementById("verificationMessage").textContent =
+      data.message || "";
   } catch (err) {
-    alert("Código inválido. Ele se encontra na mensagem do convite.");
+    alert("Código inválido. Verificar mensagem do convite.");
   }
 };
 

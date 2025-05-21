@@ -85,27 +85,30 @@
                     </div>
                 </div>
 
-                <div id="searchResult" class="search-result"></div>
+                <div id="searchResult" class="guest-list"></div>
 
                 <!-- Modal para inserção dos códigos, oculto por padrão -->
                 <div id="verifyModal" class="verify-modal" style="display: none;">
-                    <div class="verify-box">
+                <div class="verify-box">
                     <button onclick="closeModal()" class="close-button">×</button>
+
+                    <!-- Título com o nome do convite -->
+                    <h2 id="modalTitle" class="modal-title"></h2>
+
+                    <!-- Apenas input do código -->
                     <input
-                        type="text"
-                        id="conviteInput"
-                        class="input-box"
-                        placeholder="Código do convite"
+                    type="text"
+                    id="codigoInput"
+                    class="input-box"
+                    placeholder="Código de acesso"
                     />
-                    <input
-                        type="text"
-                        id="codigoInput"
-                        class="input-box"
-                        placeholder="Código de acesso"
-                    />
+
                     <button onclick="verifyGuest()" class="search-button">Verificar</button>
                     <p id="verificationMessage" class="verification-message"></p>
-                    </div>
+                    <ul id="guestList"></ul>
+                </div>
+                </div>
+
                 </div>
                 </div>
 
