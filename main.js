@@ -278,14 +278,14 @@ const API_BASE =
     ? "http://localhost:3000"
     : "https://backend-rsvp-production.up.railway.app";
 
+let conviteSelecionado = "";
+
 window.searchGuest = async function () {
   const nome = document.getElementById("searchInput").value.trim();
   if (!nome) {
     console.log("Campo de busca vazio, abortando.");
     return;
   }
-
-  console.log("Buscando por:", nome);
 
   try {
     const res = await fetch(
@@ -310,7 +310,6 @@ window.searchGuest = async function () {
 
 const guestList = document.getElementById("guestList");
 const verifyModal = document.getElementById("verifyModal");
-const conviteInput = document.getElementById("conviteInput");
 const codigoInput = document.getElementById("codigoInput");
 const verificationMessage = document.getElementById("verificationMessage");
 document.getElementById("searchButton")?.addEventListener("click", searchGuest);
@@ -352,15 +351,16 @@ function displayResults(guestArray) {
     actionDiv.classList.add("invite-card__action");
     actionDiv.textContent = "Selecionar";
 
-    // Ao clicar em selecionar abre modal para inserir código, com conviteInput preenchido
-    actionDiv.addEventListener("click", () => {
-      conviteInput.value = convidado.convite?.nome || convidado.nome || "";
-      codigoInput.value = ""; // limpa código
-      verificationMessage.textContent = ""; // limpa mensagens anteriores
-      guestList.innerHTML = ""; // limpa lista de convidados da modal
-      verifyModal.style.display = "flex"; // abre modal
-      searchResult.innerHTML = ""; // limpa resultado da busca
-    });
+  // Ao clicar em selecionar abre modal para inserir código
+  actionDiv.addEventListener("click", () => {
+    conviteSelecionado = convidado.convite?.nome || convidado.nome || "";
+    document.getElementById("modalTitle").textContent = conviteSelecionado;
+    document.getElementById("codigoInput").value = ""; // limpa código
+    document.getElementById("verificationMessage").textContent = ""; // limpa mensagens anteriores
+    document.getElementById("guestList").innerHTML = ""; // limpa lista de convidados da modal
+    document.getElementById("verifyModal").style.display = "flex"; // abre modal
+    document.getElementById("searchResult").innerHTML = ""; // limpa resultado da busca
+  });
 
     inviteDiv.appendChild(descriptionDiv);
     inviteDiv.appendChild(actionDiv);
@@ -369,7 +369,6 @@ function displayResults(guestArray) {
   });
 }
 window.verifyGuest = async function () {
-  const convite = conviteInput.value;
   const codigo = codigoInput.value;
 
   try {
