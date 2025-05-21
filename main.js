@@ -247,80 +247,6 @@ function startCountdown(targetDate) {
 const weddingDate = new Date("2025-06-21T00:00:00").getTime();
 startCountdown(weddingDate);
 
-/* <===================RSVP===================> */
-
-const convidados = [
-  { nome: "Eduardo e Rafael", telefone: "(61) 99999-xxxx" },
-  { nome: "Ana Beatriz", telefone: "(61) 98888-xxxx" },
-  { nome: "Carlos Santos", telefone: "(61) 97777-xxxx" },
-  { nome: "Fernanda Lima", telefone: "(61) 96666-xxxx" },
-];
-
-const searchInput = document.getElementById("searchInput");
-const guestList = document.getElementById("guestList");
-
-// Habilitar pesquisa com Enter
-searchInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    searchGuest();
-  }
-});
-
-// Função chamada diretamente pelo botão
-function searchGuest() {
-  const searchTerm = searchInput.value.toLowerCase().trim();
-
-  if (!searchTerm || searchTerm.length < 3) {
-    guestList.innerHTML = `<p style="color: #ef4444; font-size: 18px;">Digite um nome ou parte do nome do convite</p>`;
-    return;
-  }
-
-  const filteredGuests = convidados.filter((convidado) => {
-    const palavras = convidado.nome.toLowerCase().split(/\s+/);
-    return palavras.some((palavra) => palavra.startsWith(searchTerm));
-  });
-
-  displayResults(filteredGuests);
-}
-
-// Função para exibir os resultados da pesquisa
-function displayResults(guestArray) {
-  guestList.innerHTML = "";
-
-  if (guestArray.length === 0) {
-    guestList.innerHTML = `<p style="color: #ef4444;">Nenhum convite encontrado.</p>`;
-    return;
-  }
-
-  guestArray.forEach((convidado) => {
-    const inviteDiv = document.createElement("div");
-    inviteDiv.classList.add("guest-list-js");
-
-    const descriptionDiv = document.createElement("div");
-
-    const nameP = document.createElement("p");
-    nameP.classList.add("invite-card__name");
-    nameP.textContent = convidado.nome;
-
-    const phoneP = document.createElement("p");
-    phoneP.classList.add("invite-card__phone");
-    phoneP.innerHTML = `Tel.: <span style="text-transform: uppercase;">${convidado.telefone}</span>`;
-
-    descriptionDiv.appendChild(nameP);
-    descriptionDiv.appendChild(phoneP);
-
-    const actionDiv = document.createElement("div");
-    actionDiv.classList.add("invite-card__action");
-    actionDiv.textContent = "Selecionar";
-
-    inviteDiv.appendChild(descriptionDiv);
-    inviteDiv.appendChild(actionDiv);
-
-    guestList.appendChild(inviteDiv);
-  });
-}
-
 /* <===================TICKER===================> */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -345,3 +271,157 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+/* <===================BACK-END===================> */
+const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://backend-rsvp-production.up.railway.app";
+
+window.searchGuest = async function () {
+  const nome = document.getElementById("searchInput").value.trim();
+  if (!nome) {
+    console.log("Campo de busca vazio, abortando.");
+    return;
+  }
+
+  console.log("Buscando por:", nome);
+
+  try {
+    const res = await fetch(
+      `${API_BASE}/buscar?nome=${encodeURIComponent(nome)}`
+    );
+    const data = await res.json(); // data será um array diretamente
+
+    const el = document.getElementById("searchResult");
+
+    if (Array.isArray(data) && data.length > 0) {
+      displayResults(data); // Use data diretamente
+    } else {
+      el.innerHTML = `<p style="color: #ef4444;">Nenhum convite encontrado.</p>`;
+    }
+  } catch (error) {
+    console.error("Erro na busca:", error);
+    document.getElementById(
+      "searchResult"
+    ).innerHTML = `<p style="color: #ef4444;">Erro ao buscar convite.</p>`;
+  }
+};
+
+const guestList = document.getElementById("guestList");
+const verifyModal = document.getElementById("verifyModal");
+const conviteInput = document.getElementById("conviteInput");
+const codigoInput = document.getElementById("codigoInput");
+const verificationMessage = document.getElementById("verificationMessage");
+document.getElementById("searchButton")?.addEventListener("click", searchGuest);
+
+document.getElementById("searchInput")?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    searchGuest();
+  }
+});
+
+function displayResults(guestArray) {
+  const searchResult = document.getElementById("searchResult");
+  searchResult.innerHTML = "";
+
+  if (guestArray.length === 0) {
+    searchResult.innerHTML = `<p style="color: #ef4444;">Nenhum convite encontrado.</p>`;
+    return;
+  }
+
+  guestArray.forEach((convidado) => {
+    const inviteDiv = document.createElement("div");
+    inviteDiv.classList.add("guest-list-js");
+
+    const descriptionDiv = document.createElement("div");
+
+    const nameP = document.createElement("p");
+    nameP.classList.add("invite-card__name");
+    nameP.textContent = convidado.nome;
+
+    const invite = document.createElement("p");
+    invite.classList.add("invite-card__phone");
+    invite.innerHTML = `<span style="text-transform: uppercase;">${convidado.convite.nome}</span>`;
+
+    descriptionDiv.appendChild(nameP);
+    descriptionDiv.appendChild(invite);
+
+    const actionDiv = document.createElement("div");
+    actionDiv.classList.add("invite-card__action");
+    actionDiv.textContent = "Selecionar";
+
+    // Ao clicar em selecionar abre modal para inserir código, com conviteInput preenchido
+    actionDiv.addEventListener("click", () => {
+      conviteInput.value = convidado.convite?.nome || convidado.nome || "";
+      codigoInput.value = ""; // limpa código
+      verificationMessage.textContent = ""; // limpa mensagens anteriores
+      guestList.innerHTML = ""; // limpa lista de convidados da modal
+      verifyModal.style.display = "flex"; // abre modal
+      searchResult.innerHTML = ""; // limpa resultado da busca
+    });
+
+    inviteDiv.appendChild(descriptionDiv);
+    inviteDiv.appendChild(actionDiv);
+
+    searchResult.appendChild(inviteDiv);
+  });
+}
+window.verifyGuest = async function () {
+  const convite = conviteInput.value;
+  const codigo = codigoInput.value;
+
+  try {
+    const res = await fetch(`${API_BASE}/verificar`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ convite, codigo }),
+    });
+
+    if (!res.ok) throw new Error("Dados inválidos");
+
+    const data = await res.json();
+    guestList.innerHTML = "";
+
+    data.nomes.forEach((nome) => {
+      const li = document.createElement("li");
+      li.textContent = nome;
+      li.dataset.nome = nome;
+      li.classList.add("guest-item");
+      li.onclick = () => li.classList.toggle("selected");
+      guestList.appendChild(li);
+    });
+
+    verificationMessage.textContent = data.message || "";
+  } catch (err) {
+    alert("Código inválido. Ele se encontra na mensagem do convite.");
+  }
+};
+
+window.confirmPresence = async function () {
+  const convite = conviteInput.value;
+  const nomesConfirmados = Array.from(
+    document.querySelectorAll("#guestList .selected")
+  ).map((li) => li.dataset.nome);
+
+  if (!nomesConfirmados.length) {
+    alert("Selecione pelo menos um nome para confirmar.");
+    return;
+  }
+
+  const res = await fetch(`${API_BASE}/confirmar`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ convite, nomesConfirmados }),
+  });
+
+  const data = await res.json();
+  document.getElementById("confirmationMessage").textContent = data.message;
+  // Fechar modal após confirmação, se quiser:
+  // verifyModal.style.display = "none";
+};
+
+window.closeModal = function () {
+  verifyModal.style.display = "none";
+};

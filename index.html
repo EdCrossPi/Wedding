@@ -72,21 +72,44 @@
                            
                 
                 <div class="invite-card">
-                    <div class="box">
-                        <label for="searchInput" class="invite-text">Nome do convite</label>
-                    
+                <div class="box">
+                    <label for="searchInput" class="invite-text">Confirmar presença</label>
                     <div class="invite-input">
-                        <input type="text" id="searchInput" class="input-box">
-                        <button onclick="searchGuest()" class="search-button">
-                            Pesquisar
-                        </button>
-                    </div>
-                    </div>
-                
-                    <div id="guestList" class="guest-list">
-                        <!-- Os cartões serão inseridos aqui via JavaScript -->
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="input-box"
+                        placeholder="Insira o nome do convite"
+                    />
+                    <button id="searchButton" class="search-button">Buscar</button>
                     </div>
                 </div>
+
+                <div id="searchResult" class="search-result"></div>
+
+                <!-- Modal para inserção dos códigos, oculto por padrão -->
+                <div id="verifyModal" class="verify-modal" style="display: none;">
+                    <div class="verify-box">
+                    <button onclick="closeModal()" class="close-button">×</button>
+                    <input
+                        type="text"
+                        id="conviteInput"
+                        class="input-box"
+                        placeholder="Código do convite"
+                    />
+                    <input
+                        type="text"
+                        id="codigoInput"
+                        class="input-box"
+                        placeholder="Código de acesso"
+                    />
+                    <button onclick="verifyGuest()" class="search-button">Verificar</button>
+                    <p id="verificationMessage" class="verification-message"></p>
+                    </div>
+                </div>
+                </div>
+
+                <ul id="guestList" class="guest-list"></ul>
             </div>
 
 
@@ -129,7 +152,7 @@
         <div class="h-reposition-container">
 
 
-            <div id="story" class="hz-margin">
+            <div id="story" class="hz-margin" style="padding-left: 50px;">
                 <h3 class="reveal">A fé que nos uniu <br>
                     E o amor que nos fortalece
                 </h3>

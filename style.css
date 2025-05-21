@@ -989,9 +989,9 @@ footer h2 {
   margin-left: auto; /* mx-auto */
   margin-right: auto; /* mx-auto */
   flex: 1;
-  display: flex; /* Corrigi para 'flex' (você tinha 'display: top' que não existe) */
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: normal;
   width: 100%;
 }
@@ -1192,4 +1192,67 @@ footer h2 {
     padding-top: 30px; /* Insere padding de 60px para mobile */
     padding-bottom: 30px;
   }
+}
+
+/* <===================GUEST-LIST===================> */
+.guest-list {
+  list-style: none;
+  padding: 0;
+}
+
+.guest-item {
+  padding: 8px;
+  margin: 4px 0;
+  background-color: #eee;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.guest-item.selected {
+  background-color: #c8e6c9;
+  font-weight: bold;
+}
+
+.confirmation-message {
+  margin-top: 10px;
+  color: green;
+}
+
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+
+/* <===================MODAL===================> */
+.verify-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.verify-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 320px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
