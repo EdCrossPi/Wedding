@@ -342,7 +342,7 @@ function displayResults(guestArray) {
 
     const invite = document.createElement("p");
     invite.classList.add("invite-card__phone");
-    invite.innerHTML = `<span style="text-transform: uppercase;">${convidado.convite.nome}</span>`;
+    invite.innerHTML = `<span style="text-transform: uppercase;">Convite: ${convidado.convite.nome}</span>`;
 
     descriptionDiv.appendChild(nameP);
     descriptionDiv.appendChild(invite);
