@@ -91,13 +91,23 @@
                 <div id="verifyModal" class="verify-modal" style="display: none;">
                     <div class="verify-box">
                         <p class="modal-title" id="modalTitle"></p>
+                        <p class="modal-subtitle" id="modalSubTitle"></p>
                         <button onclick="closeModal()" class="close-button">×</button>
-                        <input
+                        <div>
+                            <input
                             type="text"
-                            id="codigoInput"
-                            class="input-box"
-                            placeholder="Código de acesso"
-                        />
+                            id="nomeInput"
+                            class="input-box-modal"
+                            placeholder="Nome Completo"
+                            />
+                            <div class="inputsModal"></div>
+                            <input
+                                type="text"
+                                id="codigoInput"
+                                class="input-box-modal"
+                                placeholder="Código de confirmação"
+                            />
+                        </div>
                         <div class="button-container">
                             <button onclick="verifyGuest()" class="search-button">Verificar</button>
                         </div>

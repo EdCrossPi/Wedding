@@ -966,11 +966,23 @@ footer h2 {
   width: 100% !important;
   border-radius: 0.5rem;
 }
+.input-box-modal {
+  border-width: 1px;
+  border-style: solid;
+  border-color: currentColor;
+  padding: 0.5rem;
+  width: 100% !important;
+  border-radius: 0.5rem;
+}
 
 .input-box:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(147, 197, 253, 0.5);
   border-color: transparent;
+}
+
+.inputsModal {
+  padding: 0.10rem;
 }
 
 .search-button {
@@ -1236,9 +1248,16 @@ footer h2 {
 /* <===================MODAL===================> */
 .modal-title {
   margin: 0;
-  padding-bottom: 15px;
   font-size: 20px;
   color: #333;
+  padding-bottom: 5px;
+}
+
+.modal-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  padding-bottom: 15px;
 }
 .verify-modal {
   position: fixed;

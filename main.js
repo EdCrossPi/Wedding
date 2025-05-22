@@ -279,6 +279,7 @@ const API_BASE =
     : "https://backend-rsvp-production.up.railway.app";
 
 let conviteSelecionado = "";
+let nomeSelecionado = "";
 
 window.searchGuest = async function () {
   const nome = document.getElementById("searchInput").value.trim();
@@ -354,7 +355,10 @@ function displayResults(guestArray) {
     // Ao clicar em selecionar abre modal para inserir código
     actionDiv.addEventListener("click", () => {
       conviteSelecionado = convidado.convite?.nome || convidado.nome || "";
+      nomeSelecionado = convidado.nome || "";
+      document.getElementById("modalSubTitle").textContent = nomeSelecionado;
       document.getElementById("modalTitle").textContent = conviteSelecionado;
+      ajustarSubTituloSeNecessario();
       document.getElementById("codigoInput").value = ""; // limpa código
       document.getElementById("verificationMessage").textContent = ""; // limpa mensagens anteriores
       document.getElementById("guestList").innerHTML = ""; // limpa lista de convidados da modal
@@ -367,6 +371,22 @@ function displayResults(guestArray) {
 
     searchResult.appendChild(inviteDiv);
   });
+}
+
+function ajustarSubTituloSeNecessario() {
+  const title = document.getElementById('modalTitle');
+  const subTitle = document.getElementById('modalSubTitle');
+
+  if (title && subTitle) {
+    const titleText = title.textContent.trim();
+    const subTitleText = subTitle.textContent.trim();
+
+    if (titleText === subTitleText) {
+      subTitle.style.display = 'none';
+    } else {
+      subTitle.style.display = 'block';
+    }
+  }
 }
 
 window.verifyGuest = async function () {
