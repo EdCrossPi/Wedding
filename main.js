@@ -390,13 +390,14 @@ function ajustarSubTituloSeNecessario() {
 }
 
 window.verifyGuest = async function () {
-  const codigo = codigoInput.value;
+  const codigo = codigoInput.value.trim();
+  const nomeCompleto = nomeInput.value.trim(); // <== novo input com id="nomeInput"
 
-  // Usa a variável global com o nome do convite
   const convite = conviteSelecionado;
+  console.log({ conviteSelecionado, codigo: codigoInput.value, nomeCompleto: nomeInput.value });
 
-  if (!convite) {
-    alert("Erro interno: nome do convite não definido.");
+  if (!convite || !codigo || !nomeCompleto) {
+    alert("Preencha todos os campos.");
     return;
   }
 
@@ -404,57 +405,25 @@ window.verifyGuest = async function () {
     const res = await fetch(`${API_BASE}/verificar`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ convite, codigo }),
+      body: JSON.stringify({ convite, codigo, nomeCompleto }),
     });
-
-    if (!res.ok) throw new Error("Dados inválidos");
 
     const data = await res.json();
-    document.getElementById("guestList").innerHTML = "";
 
-    data.nomes.forEach((nome) => {
-      const li = document.createElement("li");
-      li.textContent = nome;
-      li.dataset.nome = nome;
-      li.classList.add("guest-item");
-      li.onclick = () => li.classList.toggle("selected");
-      document.getElementById("guestList").appendChild(li);
-    });
-
-    document.getElementById("verificationMessage").textContent =
-      data.message || "";
-
-    // ✅ Abrir a modal de confirmação
-    const modal = document.getElementById("modalConfirmacao");
-    if (modal) {
-      modal.style.display = "block";
+    if (!res.ok) {
+      throw new Error(data.error || "Erro na verificação.");
     }
+
+    document.getElementById("verificationMessage").textContent = data.message;
+
+    // Opcional: esconder modal após sucesso
+    setTimeout(() => {
+      document.getElementById("verifyModal").style.display = "none";
+    }, 5000);
   } catch (err) {
-    alert("Código inválido. Verificar mensagem do convite.");
+    alert(err.message || "Erro ao verificar presença.");
+    console.error(err);
   }
-};
-
-window.confirmPresence = async function () {
-  const convite = conviteInput.value;
-  const nomesConfirmados = Array.from(
-    document.querySelectorAll("#guestList .selected")
-  ).map((li) => li.dataset.nome);
-
-  if (!nomesConfirmados.length) {
-    alert("Selecione pelo menos um nome para confirmar.");
-    return;
-  }
-
-  const res = await fetch(`${API_BASE}/confirmar`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ convite, nomesConfirmados }),
-  });
-
-  const data = await res.json();
-  document.getElementById("confirmationMessage").textContent = data.message;
-  // Fechar modal após confirmação, se quiser:
-  // verifyModal.style.display = "none";
 };
 
 window.closeModal = function () {
