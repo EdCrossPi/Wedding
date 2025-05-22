@@ -374,17 +374,17 @@ function displayResults(guestArray) {
 }
 
 function ajustarSubTituloSeNecessario() {
-  const title = document.getElementById('modalTitle');
-  const subTitle = document.getElementById('modalSubTitle');
+  const title = document.getElementById("modalTitle");
+  const subTitle = document.getElementById("modalSubTitle");
 
   if (title && subTitle) {
     const titleText = title.textContent.trim();
     const subTitleText = subTitle.textContent.trim();
 
     if (titleText === subTitleText) {
-      subTitle.style.display = 'none';
+      subTitle.style.display = "none";
     } else {
-      subTitle.style.display = 'block';
+      subTitle.style.display = "block";
     }
   }
 }
@@ -394,7 +394,6 @@ window.verifyGuest = async function () {
   const nomeCompleto = nomeInput.value.trim(); // <== novo input com id="nomeInput"
 
   const convite = conviteSelecionado;
-  console.log({ conviteSelecionado, codigo: codigoInput.value, nomeCompleto: nomeInput.value });
 
   if (!convite || !codigo || !nomeCompleto) {
     alert("Preencha todos os campos.");

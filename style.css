@@ -982,7 +982,7 @@ footer h2 {
 }
 
 .inputsModal {
-  padding: 0.10rem;
+  padding: 0.3rem;
 }
 
 .search-button {
@@ -1248,17 +1248,37 @@ footer h2 {
 /* <===================MODAL===================> */
 .modal-title {
   margin: 0;
-  font-size: 20px;
+  font-size: 2rem;
+  font-weight: bold;
   color: #333;
-  padding-bottom: 5px;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .modal-title {
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    text-align: left;
+  }
 }
 
 .modal-subtitle {
   margin: 0;
   font-size: 1rem;
   color: #333;
-  padding-bottom: 15px;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .modal-subtitle {
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+}
+
 .verify-modal {
   position: fixed;
   top: 0;
@@ -1286,6 +1306,12 @@ footer h2 {
   right: 1rem;
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .close-button {
+    font-size: 3.5rem;
+  }
 }
