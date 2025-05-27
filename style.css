@@ -1036,6 +1036,26 @@ footer h2 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+#searchResult {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left;
+}
+#searchResult:empty {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #searchResult {
+    max-height: 200px;
+    padding-right: 0;
+    font-size: 1.2rem;
+  }
+}
+
 .invite-card__name {
   font-weight: 600;
 }
