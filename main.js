@@ -310,12 +310,12 @@ window.searchGuest = async function () {
 };
 
 const guestList = document.getElementById("guestList");
-
 if (guestList.children.length === 0) {
   guestList.classList.add("is-empty");
 } else {
   guestList.classList.remove("is-empty");
 }
+
 const verifyModal = document.getElementById("verifyModal");
 const codigoInput = document.getElementById("codigoInput");
 const verificationMessage = document.getElementById("verificationMessage");

@@ -1238,6 +1238,14 @@ footer h2 {
 .guest-list {
   list-style: none;
   padding: 0;
+  height: 255px; /* Altura fixa para a lista de convidados */
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .guest-list {
+    height: 118px; /* Altura menor para mobile */
+  }
 }
 
 .guest-item {
