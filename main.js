@@ -423,61 +423,6 @@ function ajustarSubTituloSeNecessario() {
   }
 }
 
-function validarCPF(cpf) {
-  cpf = cpf.replace(/[^\d]+/g, "");
-  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
-
-  let soma = 0;
-  for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
-  let resto = (soma * 10) % 11;
-  if (resto === 10 || resto === 11) resto = 0;
-  if (resto !== parseInt(cpf.charAt(9))) return false;
-
-  soma = 0;
-  for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
-  resto = (soma * 10) % 11;
-  if (resto === 10 || resto === 11) resto = 0;
-  return resto === parseInt(cpf.charAt(10));
-}
-
-const cpfField = document.getElementById("cpfInput");
-
-if (cpfField) {
-  cpfField.setAttribute("placeholder", "Informe seu CPF");
-
-  cpfField.addEventListener("input", function () {
-    // Remove tudo que não for número
-    let v = cpfField.value.replace(/\D/g, "");
-
-    // Limita a 11 dígitos
-    if (v.length > 11) v = v.slice(0, 11);
-
-    // Aplica máscara
-    v = v.replace(/(\d{3})(\d)/, "$1.$2");
-    v = v.replace(/(\d{3})(\d)/, "$1.$2");
-    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-
-    cpfField.value = v;
-  });
-
-  // Impede digitação de letras, símbolos, etc.
-  cpfField.addEventListener("keypress", function (e) {
-    const isDigit = /\d/.test(e.key);
-    if (!isDigit) e.preventDefault();
-  });
-
-  // Valida ao sair do campo
-  cpfField.addEventListener("blur", function () {
-    const isValid = validarCPF(cpfField.value);
-    if (!isValid) {
-      alert("CPF inválido");
-      cpfField.classList.add("erro-cpf");
-    } else {
-      cpfField.classList.remove("erro-cpf");
-    }
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const cpfInput = document.getElementById("cpfInput");
   if (cpfInput) {
@@ -507,19 +452,17 @@ document.addEventListener("DOMContentLoaded", function () {
 window.verifyGuest = async function () {
   const codigoInput = document.getElementById("codigoInput");
   const nomeInput = document.getElementById("nomeInput");
-  const cpfInput = document.getElementById("cpfInput");
 
   const codigo = codigoInput.value.trim();
   const nomeCompleto = nomeInput.value.trim();
-  const cpf = cpfInput.value.trim(); // Valor já com máscara aplicada
 
   const convite =
     conviteSelecionado ||
     document.getElementById("modalTitle")?.textContent?.trim();
 
-  console.log({ convite, codigo, nomeCompleto, cpf });
+  console.log({ convite, codigo, nomeCompleto });
 
-  if (!convite || !codigo || !nomeCompleto || !cpf) {
+  if (!convite || !codigo || !nomeCompleto) {
     alert("Preencha todos os campos.");
     return;
   }
@@ -532,7 +475,6 @@ window.verifyGuest = async function () {
         convite,
         codigo,
         nomeCompleto,
-        cpf, // Nome correto para o backend
       }),
     });
 
