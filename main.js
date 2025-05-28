@@ -459,11 +459,6 @@ window.verifyGuest = async function () {
     }
 
     document.getElementById("verificationMessage").textContent = data.message;
-
-    // Opcional: esconder modal após sucesso
-    setTimeout(() => {
-      document.getElementById("verifyModal").style.display = "none";
-    }, 5000);
   } catch (err) {
     alert(err.message || "Erro ao verificar presença.");
     console.error(err);
