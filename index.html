@@ -93,7 +93,7 @@
                         <p class="modal-title" id="modalTitle"></p>
                         <p class="modal-subtitle" id="modalSubTitle"></p>
                         <button onclick="closeModal()" class="close-button">×</button>
-                        <div>
+                        <div style="gap: 1rem;">
                             <input
                             type="text"
                             id="nomeInput"
@@ -102,11 +102,21 @@
                             />
                             <div class="inputsModal"></div>
                             <input
+                            type="text"
+                            id="cpfInput"
+                            class="input-box-modal"
+                            placeholder="CPF"
+                            />
+                            <p class="box-text">Essencial para acesso à embaixada</p>
+                            <div class="inputsModal"></div>
+                            <input
                                 type="text"
                                 id="codigoInput"
                                 class="input-box-modal"
                                 placeholder="Código de confirmação"
                             />
+                            <div class="inputsModal"></div>
+                            <p class="box-text">Informações fornecidas são confidenciais e não serão compartilhadas</p>
                         </div>
                         <div class="button-container">
                             <button onclick="verifyGuest()" class="search-button">Confirmar</button>

@@ -1276,7 +1276,8 @@ footer h2 {
 /* <===================MODAL===================> */
 .modal-title {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
   font-weight: bold;
   color: #333;
   padding-bottom: 0.5rem;
@@ -1286,21 +1287,24 @@ footer h2 {
   .modal-title {
     font-size: 2.5rem;
     padding-bottom: 1rem;
+    padding-top: 1rem;
     text-align: left;
   }
 }
 
 .modal-subtitle {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.7rem;
   color: #333;
   padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
   .modal-subtitle {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding-bottom: 1rem;
     text-align: left;
     font-weight: 600;
@@ -1324,10 +1328,32 @@ footer h2 {
   background: white;
   padding: 2rem;
   border-radius: 8px;
-  width: 320px;
+  width: 450px;
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .verify-box {
+    width: 350px;
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
+
+.box-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding-left: 10px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .box-text {
+    font-size: 1.2rem;
+    padding-left: 0;
+    text-align: left;
+  }
+}
 .close-button {
   position: absolute;
   top: 0.5rem;

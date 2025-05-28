@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* <===================BACK-END===================> */
 const API_BASE =
   window.location.hostname === "localhost"
-    ? "http://localhost:3000"
+    ? "http://127.0.0.1:5500"
     : "https://backend-rsvp-production.up.railway.app";
 
 let conviteSelecionado = "";
@@ -395,13 +395,103 @@ function ajustarSubTituloSeNecessario() {
   }
 }
 
+function validarCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g, "");
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+  let soma = 0;
+  for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
+  let resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.charAt(9))) return false;
+
+  soma = 0;
+  for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  return resto === parseInt(cpf.charAt(10));
+}
+
+const cpfField = document.getElementById("cpfInput");
+
+if (cpfField) {
+  cpfField.setAttribute("placeholder", "Informe seu CPF");
+
+  cpfField.addEventListener("input", function () {
+    // Remove tudo que não for número
+    let v = cpfField.value.replace(/\D/g, "");
+
+    // Limita a 11 dígitos
+    if (v.length > 11) v = v.slice(0, 11);
+
+    // Aplica máscara
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+    cpfField.value = v;
+  });
+
+  // Impede digitação de letras, símbolos, etc.
+  cpfField.addEventListener("keypress", function (e) {
+    const isDigit = /\d/.test(e.key);
+    if (!isDigit) e.preventDefault();
+  });
+
+  // Valida ao sair do campo
+  cpfField.addEventListener("blur", function () {
+    const isValid = validarCPF(cpfField.value);
+    if (!isValid) {
+      alert("CPF inválido");
+      cpfField.classList.add("erro-cpf");
+    } else {
+      cpfField.classList.remove("erro-cpf");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cpfInput = document.getElementById("cpfInput");
+  if (cpfInput) {
+    cpfInput.setAttribute("placeholder", "___.___.___-__");
+
+    cpfInput.addEventListener("input", function () {
+      let v = cpfInput.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d)/, "$1.$2");
+      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      cpfInput.value = v;
+    });
+
+    cpfInput.addEventListener("blur", function () {
+      const isValid = validarCPF(cpfInput.value);
+      if (!isValid) {
+        alert("CPF inválido");
+        cpfInput.classList.add("erro-cpf");
+      } else {
+        cpfInput.classList.remove("erro-cpf");
+      }
+    });
+  }
+});
+
 window.verifyGuest = async function () {
+  const codigoInput = document.getElementById("codigoInput");
+  const nomeInput = document.getElementById("nomeInput");
+  const cpfInput = document.getElementById("cpfInput");
+
   const codigo = codigoInput.value.trim();
-  const nomeCompleto = nomeInput.value.trim(); // <== novo input com id="nomeInput"
+  const nomeCompleto = nomeInput.value.trim();
+  const cpf = cpfInput.value.trim(); // Valor já com máscara aplicada
 
-  const convite = conviteSelecionado;
+  const convite =
+    conviteSelecionado ||
+    document.getElementById("modalTitle")?.textContent?.trim();
 
-  if (!convite || !codigo || !nomeCompleto) {
+  console.log({ convite, codigo, nomeCompleto, cpf });
+
+  if (!convite || !codigo || !nomeCompleto || !cpf) {
     alert("Preencha todos os campos.");
     return;
   }
@@ -410,7 +500,12 @@ window.verifyGuest = async function () {
     const res = await fetch(`${API_BASE}/verificar`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ convite, codigo, nomeCompleto }),
+      body: JSON.stringify({
+        convite,
+        codigo,
+        nomeCompleto,
+        cpf, // Nome correto para o backend
+      }),
     });
 
     const data = await res.json();
@@ -424,7 +519,7 @@ window.verifyGuest = async function () {
     // Opcional: esconder modal após sucesso
     setTimeout(() => {
       document.getElementById("verifyModal").style.display = "none";
-    }, 5000);
+    }, 20000);
   } catch (err) {
     alert(err.message || "Erro ao verificar presença.");
     console.error(err);
