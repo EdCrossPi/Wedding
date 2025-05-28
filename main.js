@@ -341,6 +341,21 @@ function displayResults(guestArray) {
     const inviteDiv = document.createElement("div");
     inviteDiv.classList.add("guest-list-js");
 
+    // Ajusta a altura do container de acordo com a quantidade de convidados
+    const totalGuests = guestArray.length;
+    const searchResult = document.getElementById("searchResult");
+    if (searchResult) {
+      if (totalGuests === 1) {
+        searchResult.style.height = "80px";
+      } else if (totalGuests === 2) {
+        searchResult.style.height = "165px";
+      } else if (totalGuests >= 3) {
+        searchResult.style.height = "254px";
+      } else {
+        searchResult.style.height = "";
+      }
+    }
+
     const descriptionDiv = document.createElement("div");
 
     const nameP = document.createElement("p");
@@ -519,7 +534,7 @@ window.verifyGuest = async function () {
     // Opcional: esconder modal após sucesso
     setTimeout(() => {
       document.getElementById("verifyModal").style.display = "none";
-    }, 20000);
+    }, 5000);
   } catch (err) {
     alert(err.message || "Erro ao verificar presença.");
     console.error(err);
