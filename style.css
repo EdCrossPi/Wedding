@@ -1299,7 +1299,7 @@ footer h2 {
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
