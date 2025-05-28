@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/wedding-rings.CSsfelrD.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/7b12bcc245.js" crossorigin="anonymous"></script>
+
+
+    <title>Ana Bia e Edu</title>
+  <script type="module" crossorigin src="./assets/main.CPmfIw-u.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main.CTQ87MBK.css">
+</head>
+<body class="w-full min-h-screen">
+
+
+    <nav class="nav">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="cursor: pointer;">A&E</label>
+        <ul class="text">
+            <li><a href="https://giftpage-eduebia.vercel.app/">Lista de Presentes</a></li>
+            <li><a href="#story">Nossa História</a></li>
+            <li><a href="#local">Localização</a></li>
+            <li><a href="#votos">Votos</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="home hz-margin" id="wedding-title">
+        <h3>Vamos nos casar</h3>
+        <h1>Ana Beatriz e Eduardo</h1>
+    </div>
+
+    <div class="container-out">
+
+        <div class="text" id="wedding-date">
+            <div>
+                <div class="date-container">
+                    <span class="bar"></span>
+                    <h2 class="date">21/06/2025</h2>
+                    <span class="bar"></span>
+                </div>
+            </div>
+
+
+            <div class="container-in">
+                <div class="countdown-section">
+                    <h2 class="countdown-text">CONTAGEM REGRESSIVA</h2>
+
+                    <div class="countdown-container">
+                        <div class="countdown-box">
+                            <span id="days" class="countdown-number">00 <br></span>
+                            <span class="countdown-label">DIAS</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="hours" class="countdown-number">00</span>
+                            <span class="countdown-label">HORAS</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="minutes" class="countdown-number">00</span>
+                            <span class="countdown-label">MINUTOS</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="seconds" class="countdown-number">00</span>
+                            <span class="countdown-label" style="margin-left: -5px;">SEGUNDOS</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="invite-card">
+                <div class="box">
+                    <label for="searchInput" class="invite-text">Confirmar presença</label>
+                    <div class="invite-input">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="input-box"
+                        placeholder="Insira o nome do convite"
+                    />
+                    <button id="searchButton" class="search-button">Buscar</button>
+                    </div>
+                </div>
+
+                <div id="searchResult" class="guest-list"></div>
+
+                <!-- Modal para inserção dos códigos, oculto por padrão -->
+                <div id="verifyModal" class="verify-modal" style="display: none;">
+                    <div class="verify-box">
+                        <p class="modal-title" id="modalTitle"></p>
+                        <p class="modal-subtitle" id="modalSubTitle"></p>
+                        <button onclick="closeModal()" class="close-button">×</button>
+                        <div style="gap: 1rem;">
+                            <input
+                            type="text"
+                            id="nomeInput"
+                            class="input-box-modal"
+                            placeholder="Nome Completo"
+                            />
+                            <div class="inputsModal"></div>
+                            <input
+                            type="text"
+                            id="cpfInput"
+                            class="input-box-modal"
+                            placeholder="CPF"
+                            />
+                            <p class="box-text">Essencial para acesso à embaixada</p>
+                            <div class="inputsModal"></div>
+                            <input
+                                type="text"
+                                id="codigoInput"
+                                class="input-box-modal"
+                                placeholder="Código de confirmação"
+                            />
+                            <div class="inputsModal"></div>
+                            <p class="box-text">Informações fornecidas são confidenciais e não serão compartilhadas</p>
+                        </div>
+                        <div class="button-container">
+                            <button onclick="verifyGuest()" class="search-button">Confirmar</button>
+                        </div>
+                        <br>
+                        <p id="verificationMessage" class="modalSubTitle"></p>
+                    </div>
+                </div>
+
+                </div>
+
+                <ul id="guestList" class="guest-list"></ul>
+            </div>
+
+
+        </div>
+        <div class="home-img" id="home-img-lg" data-parallax=""></div>
+    </div>
+
+
+    <div class="home-img home-img-sm"></div>
+    <div class="timeline hz-margin reveal timeline-text">
+        <h1>Celebrando Nosso Amor <br>
+            Com Aqueles Que Amamamos
+        </h1>
+        <div class="timeline-container">
+            <div class="timeline-img"></div>
+            <div class="timings reveal" style="padding: 0px;">
+                <div>
+                <div><h2>cerimônia e recepção</h2></div>
+                <p class="text">É com imensa alegria e gratidão que recebemos cada um de vocês para celebrar este momento tão especial em nossas vidas. <br>
+                    <br>A presença de cada amigo e familiar tornará este dia ainda mais inesquecível.
+                    Que esta celebração seja repleta de sorrisos, abraços e momentos inesquecíveis, pois nada nos faz mais felizes do que compartilhar essa jornada com aqueles que amamos! <br>
+                    <br>Esperamos que aproveitem cada instante! <br>
+                    <br>"Regozijai-vos sempre no Senhor. <br>
+                    Outra vez digo: regozijai-vos!"
+                    <br>Filipenses 4:4
+                </p>
+
+                <div class="location-mobile">
+                    <h3><strong>Sábado, 21 de junho de 2025</strong> <br>
+                    <a href="#local" onclick="myFunction(event)">Embaixada do Canadá</a> <br>
+
+                    Horário: 09:00</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="v-reposition-container">
+        <div class="h-reposition-container">
+
+
+            <div id="story" class="hz-margin" style="padding-left: 50px;">
+                <h3 class="reveal">A fé que nos uniu <br>
+                    E o amor que nos fortalece
+                </h3>
+                <p class="text reveal">Embora tenhamos estudado na mesma faculdade, no mesmo período e turno, nos conhecemos na Igreja Batista do Lago, após termos nos formado. Com a ajuda de um pequeno cupido chamado Levi, começamos a conversar e a nos conhecer melhor. A intencionalidade e convergência de princípios nos trouxeram até aqui, e assim mantemos a cumplicidade e o amor que nos une.</p>
+            </div>
+
+
+            <div class="gallery hz-margin reveal">
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+            </div>
+
+        <div class="love hz-margin">
+            <h2 style="text-align: center;">O amor...</h2>
+            <div class="ticker-wrapper love">
+                <div class="ticker-container">
+                    <div class="ticker">
+                        <div class="ticker-content" style="animation-direction: reverse;">
+                            <div class="ticker-item">É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja. É paciente. É bondoso. Não inveja.</div>
+                        </div>
+                        <div class="ticker">
+                            <div class="ticker-content">
+                                <div class="ticker-item">Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. Não se vangloria. Não se orgulha. Não maltrata. </div>
+                            </div>
+                        </div>
+                        <div class="ticker">
+                            <div class="ticker-content" style="animation-direction: reverse;">
+                                <div class="ticker-item">Não busca seus próprios interesses. Não se ira facilmente. Não guarda rancor. Não busca seus próprios interesses. Não se ira facilmente. Não guarda rancor. Não busca seus próprios interesses. Não se ira facilmente. Não guarda rancor. Não busca seus próprios interesses. Não se ira facilmente. Não guarda rancor.</div>
+                            </div>
+                        </div>
+                        <div class="ticker">
+                            <div class="ticker-content">
+                                <div class="ticker-item">Não se alegra com a injustiça, mas se alegra com a verdade. Não se alegra com a injustiça, mas se alegra com a verdade. Não se alegra com a injustiça, mas se alegra com a verdade. Não se alegra com a injustiça, mas se alegra com a verdade. Não se alegra com a injustiça, mas se alegra com a verdade. </div>
+                            </div>
+                        </div>
+                        <div class="ticker">
+                            <div class="ticker-content" style="animation-direction: reverse;">
+                                <div class="ticker-item">Tudo sofre. Tudo crê. Tudo espera. Tudo suporta. Tudo sofre. Tudo crê. Tudo espera. Tudo suporta. Tudo sofre. Tudo crê. Tudo espera. Tudo suporta. Tudo sofre. Tudo crê. Tudo espera. Tudo suporta. Tudo sofre. Tudo crê. Tudo espera. Tudo suporta. Tudo sofre. Tudo crê. Tudo espera. Tudo suporta.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 style="text-align: center;">1 Coríntios 13:4-7</h4>
+        </div>
+
+
+            <div class="hands" id="parallax1" data-parallax></div>
+
+
+            <div id="local">
+                <h2 class="reveal">CERIMÔNIA E RECEPÇÃO</h2>
+
+                        <h3 class="reveal ceremony local">
+                                Nossa cerimônia e recepção serão realizadas na embaixada do Canadá, com início às 09:00
+                                <br>
+                                <span><strong>Sua presença tornará este momento ainda mais especial</strong></span>
+                        </h3>
+
+                    <div class="stay-container reveal active" style="padding: 10px;">
+                        <div class="stay-item map-container">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4553.558740621104!2d-47.88094812411168!3d-15.815288023471373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b2b90454ee5%3A0x4ec8a5d59ffebe0a!2sEmbaixada%20do%20Canad%C3%A1!5e1!3m2!1spt-BR!2sbr!4v1738709800997!5m2!1spt-BR!2sbr"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                </div>
+            </div>
+
+
+            <div id="votos">
+                <div class="registry-container reveal">
+                    <h3 class="vote-text">Votos</h3>
+                    <div class="text">
+                        Prometo, diante de Deus, cuidar de você e dos filhos que gerarmos, com amor, alegria e zelo. Comprometo-me a te sustentar com o que estiver ao meu alcance, com provisão e direcionamento do Senhor.<br>
+                        <br>Juntos, seremos guardiões do nosso lar e dos nossos filhos, sendo força e coragem um para o outro, como descrito em Eclesiastes 4:9-10: "É melhor serem dois do que um, porque maior é a recompensa do trabalho de duas pessoas. Se caírem, um levantará o outro. Mas pobre do homem que cai e não tem quem o levante!"<br>
+                        <br>Você completa a minha vida e, com todo o meu coração, prometo te respeitar e te honrar todos os dias. Porque em você encontrei não apenas um amor, mas um reflexo do cuidado e da graça de Deus em minha vida. Prometo valorizar suas virtudes, ser paciente nas falhas, e crescer ao seu lado em sabedoria, fé e compaixão. Que o nosso amor seja um reflexo do amor de Cristo: firme, sacrificial e eterno.<br>
+                        <br>Que a nossa união encha nossa vida de alegria, amor e prosperidade, segundo a vontade do Pai.
+                    </div>
+                    <div class="bless-us">
+                        <a href="https://giftpage-eduebia.vercel.app/"></a>
+                            <button class="huge-btn">ABENÇOE-NOS</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="registry-img registry-img-lg" id="parallax2" data-parallax></div>
+            </div>
+            <div class="registry-img registry-img-sm"></div>
+
+
+            <div class="parting-message reveal">
+                <h1>Esperamos Você!</h1>
+            <script>
+                function scrollToConfirm() {
+                    const element = document.getElementById("wedding-title");
+                    const offset = -20;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition + offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            </script>
+            <button class="huge-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">VOLTAR PARA O INÍCIO</button>
+            </div>
+
+
+            <footer>
+                <h2>Feito pelo noivo 🤎</h2> <br>
+                <div class="text">Foto por:  <a href="https://www.instagram.com/orafaelmaiaa/" class="text">@orafaelmaiaa</a></div>
+            </footer>
+        </div>
+    </div>
+
+
+</body>
+</html>
