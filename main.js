@@ -341,18 +341,31 @@ function displayResults(guestArray) {
     const inviteDiv = document.createElement("div");
     inviteDiv.classList.add("guest-list-js");
 
-    // Ajusta a altura do container de acordo com a quantidade de convidados
+    // Ajusta a altura do container de acordo com a quantidade de convidados e se é mobile
     const totalGuests = guestArray.length;
     const searchResult = document.getElementById("searchResult");
     if (searchResult) {
-      if (totalGuests === 1) {
-        searchResult.style.height = "80px";
-      } else if (totalGuests === 2) {
-        searchResult.style.height = "165px";
-      } else if (totalGuests >= 3) {
-        searchResult.style.height = "254px";
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        if (totalGuests === 1) {
+          searchResult.style.height = "55px";
+        } else if (totalGuests === 2) {
+          searchResult.style.height = "118px";
+        } else if (totalGuests >= 3) {
+          searchResult.style.height = "179px";
+        } else {
+          searchResult.style.height = "";
+        }
       } else {
-        searchResult.style.height = "";
+        if (totalGuests === 1) {
+          searchResult.style.height = "80px";
+        } else if (totalGuests === 2) {
+          searchResult.style.height = "165px";
+        } else if (totalGuests >= 3) {
+          searchResult.style.height = "255px";
+        } else {
+          searchResult.style.height = "";
+        }
       }
     }
 
