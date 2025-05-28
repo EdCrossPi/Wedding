@@ -1317,6 +1317,15 @@ footer h2 {
   }
 }
 
+.modal-confirmation {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
 .verify-modal {
   position: fixed;
   top: 0;

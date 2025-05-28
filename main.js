@@ -423,32 +423,6 @@ function ajustarSubTituloSeNecessario() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const cpfInput = document.getElementById("cpfInput");
-  if (cpfInput) {
-    cpfInput.setAttribute("placeholder", "___.___.___-__");
-
-    cpfInput.addEventListener("input", function () {
-      let v = cpfInput.value.replace(/\D/g, "");
-      if (v.length > 11) v = v.slice(0, 11);
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d)/, "$1.$2");
-      v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-      cpfInput.value = v;
-    });
-
-    cpfInput.addEventListener("blur", function () {
-      const isValid = validarCPF(cpfInput.value);
-      if (!isValid) {
-        alert("CPF inválido");
-        cpfInput.classList.add("erro-cpf");
-      } else {
-        cpfInput.classList.remove("erro-cpf");
-      }
-    });
-  }
-});
-
 window.verifyGuest = async function () {
   const codigoInput = document.getElementById("codigoInput");
   const nomeInput = document.getElementById("nomeInput");
