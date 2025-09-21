@@ -203,14 +203,12 @@ window.addEventListener("resize", checkDevice);
 
 /* <===================COUNTDOWN===================> */
 
-// Contagem regressiva
-
-function startCountdown(targetDate) {
-  function updateCountdown() {
+function startCountUp(startDate) {
+  function updateCountUp() {
     const now = new Date().getTime();
-    const timeLeft = targetDate - now;
+    const timePassed = now - startDate;
 
-    if (timeLeft <= 0) {
+    if (timePassed < 0) {
       document.getElementById("days").textContent = "00";
       document.getElementById("hours").textContent = "00";
       document.getElementById("minutes").textContent = "00";
@@ -218,12 +216,12 @@ function startCountdown(targetDate) {
       return;
     }
 
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const days = Math.floor(timePassed / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      (timePassed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    const minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
 
     document.getElementById("days").textContent = days
       .toString()
@@ -239,9 +237,13 @@ function startCountdown(targetDate) {
       .padStart(2, "0");
   }
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown(); // Chamada inicial
+  setInterval(updateCountUp, 1000);
+  updateCountUp(); // Chamada inicial
 }
+
+// Data do casamento: 21/06/2025 às 10:00
+const weddingStartDate = new Date("2025-06-21T10:00:00").getTime();
+startCountUp(weddingStartDate);
 
 // Data do casamento
 const weddingDate = new Date("2025-06-21T00:00:00").getTime();
