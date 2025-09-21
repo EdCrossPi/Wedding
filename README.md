@@ -16,6 +16,7 @@ Interactive Timeline: A dedicated section to tell the couple's story.
 Event Information: Details about the ceremony and party, including a map and useful tips for guests.
 
 Technologies Used
+
 Wedding Website
 
 HTML
