@@ -1094,39 +1094,39 @@ footer h2 {
 }
 
 .countdown-text {
-  font-size: 1.875rem; /* 30px - text-3xl */
-  line-height: 2.25rem; /* 36px - line-height padrão do text-3xl */
-  font-weight: 700; /* font-bold */
-  margin-bottom: 1rem; /* mb-4 (4 unidades = 1rem/16px) */
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .countdown-container {
   display: flex;
-  justify-content: center; /* centraliza os filhos */
-  align-items: center; /* alinha verticalmente */
-  gap: 1rem; /* espaço entre os elementos */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .countdown-number {
-  font-size: 2.5rem; /* equivalent to text-3xl */
-  font-weight: bold; /* equivalent to font-bold */
-  color: #2d3748; /* equivalent to text-gray-800 */
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d3748;
 }
 .countdown-label {
-  font-size: 0.75rem; /* equivalent to text-xs */
-  color: #6b7280; /* equivalent to text-gray-500 */
-  font-weight: 600; /* equivalent to font-semibold */
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 600;
 }
 
 .search-box-bf {
   --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity, 1)); /* #86efac */
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity, 1));
   color: black;
-  padding-left: 1rem; /* equivalent to px-4 */
-  padding-right: 1rem; /* equivalent to px-4 */
-  padding-top: 0.5rem; /* equivalent to py-2 */
-  padding-bottom: 0.5rem; /* equivalent to py-2 */
-  border-radius: 0.5rem; /* equivalent to rounded-lg */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .search-box:hover {
