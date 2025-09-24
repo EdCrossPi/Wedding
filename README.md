@@ -22,7 +22,7 @@ Prisma
 NeonDB
 Railway
 
-Gift Page
+Gift Page:
 Next.js
 
 The project is publicly available and was published using Vercel.
